@@ -1,10 +1,10 @@
 class Tp < Formula
   desc "Teleport"
   homepage "https://github.com/eli-front/tp"
-  url "https://github.com/eli-front/tp/releases/tag/v0.1.0"
-  sha256 "35fa614d79e77f7b6a9fdf0e753ccf6cbb866c653ea8350eb1d8241140881a5f"
 
-  depends_on "rust" => :build
+  url "https://github.com/eli-front/tp/archive/refs/tags/v0.1.1.tar.gz", :using => :curl
+
+  sha256 "186cccc264aea6b338303dbb2c2b520c65e7820fef50db915b29bb67d8d69fe3"
 
   def install
     system "cargo", "build", "--release"
