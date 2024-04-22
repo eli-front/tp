@@ -1,4 +1,4 @@
-class TP < Formula
+class Tp < Formula
   desc "Teleport"
   homepage "https://github.com/eli-front/tp"
   url "https://github.com/eli-front/tp/releases/tag/v0.1.0"
