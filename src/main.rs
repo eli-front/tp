@@ -1,8 +1,9 @@
 mod cmd;
 mod types;
 mod utils;
+
 use clap::Parser;
-use cmd::{clean::clean, list::list, save::save, tp::teleport};
+use cmd::{clean::clean, list::list, remove::remove, save::save, tp::teleport};
 use utils::get_current_dir;
 
 #[derive(Parser, Debug)]
@@ -26,6 +27,11 @@ enum Commands {
     List,
     #[command(about = "Delete all saved directories", name = "clean")]
     Clean,
+    #[command(about = "Delete a single directory by name", name = "rm")]
+    Remove {
+        #[arg(help = "Enter a name for the directory", short, long)]
+        name: String,
+    },
 }
 
 fn main() {
@@ -38,6 +44,7 @@ fn main() {
         Some(Commands::Save { name }) => save(&current_dir, name),
         Some(Commands::List) => list(),
         Some(Commands::Clean) => clean(),
+        Some(Commands::Remove { name }) => remove(name),
         None => {
             teleport(&cli);
         }

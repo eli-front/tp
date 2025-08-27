@@ -90,3 +90,12 @@ fn set_config(config: &str) {
     let config_path = format!("{}/.tp/config", home);
     std::fs::write(config_path, config).unwrap();
 }
+
+pub fn remove_dir(name: &str) {
+    let all_dirs = get_saved_dirs()
+        .into_iter()
+        .filter(|dir| dir.name != name)
+        .collect();
+
+    set_dirs(all_dirs);
+}
